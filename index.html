@@ -42,26 +42,40 @@ a.row{color:var(--ink);text-decoration:none;display:flex}
 <script>
 // 과목 추가/수정은 아래 목록 한 줄만 편집
 // status: live(바로가기) / soon(배포 예정) / prep(준비 중)
-const COURSES = [
-  {code:"MATH102", name:"미적분학2", note:"과외", url:"https://cmkang131.github.io/math102-notes/", status:"live"},
-  {code:"MATH432", name:"수리데이터사이언스", note:"개념 정리본", url:"https://cmkang131.github.io/sudesa-notes/", status:"live"},
-  {code:"EECE274", name:"디지털시스템설계", note:"개념 정리본 · 중간고사 범위 L02–L12", url:"https://cmkang131.github.io/eece274-notes/", status:"live"},
-  {code:"",        name:"딥러닝", note:"연구 노트", url:"https://cmkang131.github.io/dl-notes/", status:"live"},
-  {code:"CSED233", name:"데이터구조", note:"개념 정리본", url:"https://cmkang131.github.io/csed233-notes/", status:"live"},
-  {code:"",        name:"알고리즘", note:"", url:"", status:"prep"},
-  {code:"",        name:"컴퓨터 시스템", note:"마프", url:"", status:"prep"},
+const GROUPS = [
+  {title:"이번 학기", courses:[
+    {code:"MATH432",  name:"수리데이터사이언스", note:"개념 정리본", url:"https://cmkang131.github.io/sudesa-notes/", status:"live"},
+    {code:"CSED211",  name:"컴퓨터시스템", note:"개념 정리본 · 중간 10/29", url:"https://cmkang131.github.io/csed211-notes/", status:"live"},
+    {code:"CSED331",  name:"알고리즘", note:"", url:"", status:"prep"},
+    {code:"CMEF499D", name:"마케팅", note:"", url:"", status:"prep"},
+  ]},
+  {title:"과외", courses:[
+    {code:"MATH102",  name:"미적분학2", note:"과외", url:"https://cmkang131.github.io/math102-notes/", status:"live"},
+  ]},
+  {title:"지난 학기", courses:[
+    {code:"CSED233",  name:"데이터구조", note:"개념 정리본", url:"https://cmkang131.github.io/csed233-notes/", status:"live"},
+    {code:"EECE274",  name:"디지털시스템설계", note:"개념 정리본 · 중간고사 범위 L02–L12", url:"https://cmkang131.github.io/eece274-notes/", status:"live"},
+    {code:"",         name:"딥러닝", note:"연구 노트", url:"https://cmkang131.github.io/dl-notes/", status:"live"},
+    {code:"CSED490E", name:"자연어처리", note:"드랍", url:"", status:"prep"},
+  ]},
 ];
 const LABEL = {live:"바로가기 →", soon:"배포 예정", prep:"준비 중"};
 const el = document.getElementById('clist');
-for (const c of COURSES) {
-  const row = document.createElement(c.status === "live" ? "a" : "div");
-  row.className = "row";
-  if (c.status === "live") row.href = c.url;
-  row.innerHTML =
-    '<span class="code">' + c.code + '</span>' +
-    '<span class="name">' + c.name + (c.note ? '<span class="note">' + c.note + '</span>' : '') + '</span>' +
-    '<span class="st' + (c.status === "live" ? '' : ' off') + '">' + LABEL[c.status] + '</span>';
-  el.appendChild(row);
+for (const g of GROUPS) {
+  const h = document.createElement('div');
+  h.textContent = g.title;
+  h.style.cssText = 'margin:22px 0 4px;font-size:13px;font-weight:700;color:#888;letter-spacing:.08em';
+  el.appendChild(h);
+  for (const c of g.courses) {
+    const row = document.createElement(c.status === "live" ? "a" : "div");
+    row.className = "row";
+    if (c.status === "live") row.href = c.url;
+    row.innerHTML =
+      '<span class="code">' + c.code + '</span>' +
+      '<span class="name">' + c.name + (c.note ? '<span class="note">' + c.note + '</span>' : '') + '</span>' +
+      '<span class="st' + (c.status === "live" ? '' : ' off') + '">' + LABEL[c.status] + '</span>';
+    el.appendChild(row);
+  }
 }
 </script>
 </body>
