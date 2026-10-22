@@ -3,7 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>공부 필기 정리</title>
+<title>공부 필기 정리 · 과목별 개념 정리 모음</title>
+<meta name="description" content="수리데이터사이언스, 컴퓨터시스템, 알고리즘, 딥러닝 등 9개 과목의 개념 정리본을 한곳에 모은 개인 공부 노트 포털.">
+<meta property="og:title" content="공부 필기 정리">
+<meta property="og:description" content="9개 과목 개념 정리본 모음">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cmkang131.github.io/">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
 @font-face{font-family:'Noto Sans KR';src:url('notosanskr-subset.woff') format('woff');font-weight:400 700;font-display:swap}
 :root{--ink:#111;--gray:#666;--blue:#1e4f9f}
@@ -25,6 +31,9 @@ h1.doct{font-size:23px;font-weight:700;margin:6px 0 4px}
 .clist .st{flex:0 0 auto;font-size:13.5px;border:1px solid #111;padding:1px 9px;color:var(--ink);text-decoration:none}
 .clist .st.off{color:var(--gray);border-color:#bbb}
 a.row{color:var(--ink);text-decoration:none;display:flex}
+.gtitle{margin:22px 0 4px;font-size:13px;font-weight:700;color:var(--gray);letter-spacing:.08em}
+a.row:hover,a.row:focus-visible{background:#f2f5fa;outline:2px solid var(--blue);outline-offset:2px}
+a.row:focus-visible{border-radius:4px}
 @media (max-width:760px){
   .page{padding:22px 18px 60px}
   .main{font-size:16px}
@@ -37,49 +46,22 @@ a.row{color:var(--ink);text-decoration:none;display:flex}
 <div class="phead"><span class="course">공부 필기 정리</span><span>2026-2</span></div>
 <h1 class="doct">공부 필기 정리</h1>
 <p class="sub">과목별 개념 정리본 모음</p>
-<div class="clist" id="clist"></div>
+<div class="clist" id="clist">
+<div class="gtitle">이번 학기</div>
+<a class="row" href="https://cmkang131.github.io/sudesa-notes/"><span class="code">MATH432</span><span class="name">수리데이터사이언스<span class="note">개념 정리본</span></span><span class="st">바로가기 →</span></a>
+<a class="row" href="https://cmkang131.github.io/csed211-notes/"><span class="code">CSED211</span><span class="name">컴퓨터시스템<span class="note">개념 정리본 · 중간 10/29</span></span><span class="st">바로가기 →</span></a>
+<a class="row" href="https://cmkang131.github.io/csed331-notes/"><span class="code">CSED331</span><span class="name">알고리즘<span class="note">개념 정리본 · 중간 10/26</span></span><span class="st">바로가기 →</span></a>
+<a class="row" href="https://cmkang131.github.io/mkt-notes/"><span class="code">CMEF499D</span><span class="name">데이터와 경제학 마케팅<span class="note">특강 · 강의 정리</span></span><span class="st">바로가기 →</span></a>
+<div class="gtitle">과외</div>
+<a class="row" href="https://cmkang131.github.io/math102-notes/"><span class="code">MATH102</span><span class="name">미적분학2<span class="note">과외</span></span><span class="st">바로가기 →</span></a>
+<div class="gtitle">지난 학기</div>
+<a class="row" href="https://cmkang131.github.io/csed233-notes/"><span class="code">CSED233</span><span class="name">데이터구조<span class="note">개념 정리본</span></span><span class="st">바로가기 →</span></a>
+<a class="row" href="https://cmkang131.github.io/dl-notes/"><span class="code"></span><span class="name">딥러닝<span class="note">연구 노트</span></span><span class="st">바로가기 →</span></a>
+<a class="row" href="https://cmkang131.github.io/nlp-notes/"><span class="code">CSED490E</span><span class="name">자연어처리<span class="note">드랍 · 개념 정리본</span></span><span class="st">바로가기 →</span></a>
+<a class="row" href="https://cmkang131.github.io/past-notes/"><span class="code"></span><span class="name">지난 학기 아카이브<span class="note">MATH101 · CSED101 · 인공지능 · EVSE101 · LIFE103 · 일반물리 · 과사통</span></span><span class="st">바로가기 →</span></a>
+<div class="gtitle">기타</div>
+<a class="row" href="https://cmkang131.github.io/eece274-notes/"><span class="code">EECE274</span><span class="name">디지털시스템설계<span class="note">친구 과목 · 개념 정리본</span></span><span class="st">바로가기 →</span></a>
+</div>
 </div></div>
-<script>
-// 과목 추가/수정은 아래 목록 한 줄만 편집
-// status: live(바로가기) / soon(배포 예정) / prep(준비 중)
-const GROUPS = [
-  {title:"이번 학기", courses:[
-    {code:"MATH432",  name:"수리데이터사이언스", note:"개념 정리본", url:"https://cmkang131.github.io/sudesa-notes/", status:"live"},
-    {code:"CSED211",  name:"컴퓨터시스템", note:"개념 정리본 · 중간 10/29", url:"https://cmkang131.github.io/csed211-notes/", status:"live"},
-    {code:"CSED331",  name:"알고리즘", note:"개념 정리본 · 중간 10/26", url:"https://cmkang131.github.io/csed331-notes/", status:"live"},
-    {code:"CMEF499D", name:"데이터와 경제학 마케팅", note:"특강 · 강의 정리", url:"https://cmkang131.github.io/mkt-notes/", status:"live"},
-  ]},
-  {title:"과외", courses:[
-    {code:"MATH102",  name:"미적분학2", note:"과외", url:"https://cmkang131.github.io/math102-notes/", status:"live"},
-  ]},
-  {title:"지난 학기", courses:[
-    {code:"CSED233",  name:"데이터구조", note:"개념 정리본", url:"https://cmkang131.github.io/csed233-notes/", status:"live"},
-    {code:"",         name:"딥러닝", note:"연구 노트", url:"https://cmkang131.github.io/dl-notes/", status:"live"},
-    {code:"CSED490E", name:"자연어처리", note:"드랍 · 개념 정리본", url:"https://cmkang131.github.io/nlp-notes/", status:"live"},
-    {code:"",         name:"지난 학기 아카이브", note:"MATH101 · CSED101 · 인공지능 · EVSE101 · LIFE103 · 일반물리 · 과사통", url:"https://cmkang131.github.io/past-notes/", status:"live"},
-  ]},
-  {title:"기타", courses:[
-    {code:"EECE274",  name:"디지털시스템설계", note:"친구 과목 · 개념 정리본", url:"https://cmkang131.github.io/eece274-notes/", status:"live"},
-  ]},
-];
-const LABEL = {live:"바로가기 →", soon:"배포 예정", prep:"준비 중"};
-const el = document.getElementById('clist');
-for (const g of GROUPS) {
-  const h = document.createElement('div');
-  h.textContent = g.title;
-  h.style.cssText = 'margin:22px 0 4px;font-size:13px;font-weight:700;color:#888;letter-spacing:.08em';
-  el.appendChild(h);
-  for (const c of g.courses) {
-    const row = document.createElement(c.status === "live" ? "a" : "div");
-    row.className = "row";
-    if (c.status === "live") row.href = c.url;
-    row.innerHTML =
-      '<span class="code">' + c.code + '</span>' +
-      '<span class="name">' + c.name + (c.note ? '<span class="note">' + c.note + '</span>' : '') + '</span>' +
-      '<span class="st' + (c.status === "live" ? '' : ' off') + '">' + LABEL[c.status] + '</span>';
-    el.appendChild(row);
-  }
-}
-</script>
 </body>
 </html>
