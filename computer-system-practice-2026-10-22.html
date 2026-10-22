@@ -387,6 +387,7 @@ function renderDetail(){
       <button class="btn" id="st_do">진행중으로 표시</button>
       <button class="btn" id="st_new">미시작으로 되돌리기</button>
     </div>
+    <div class="noteinfo" style="margin-top:.5rem">진행 상태·메모·코드는 이 브라우저(localStorage)에만 저장됩니다. 체크한 뒤 새로고침하거나 폰을 잠갔다 켜도 그대로 남고, 다른 기기와는 공유되지 않습니다. 처음 방문하면 전부 미시작 상태로 시작합니다.</div>
     <div style="margin-top:.5rem"><textarea class="note" id="memo" placeholder="메모 — 풀이 아이디어, 틀린 이유, 다음 할 일">${esc(LS.note[it.no]||'')}</textarea></div>
   </div>`;
 
@@ -436,7 +437,7 @@ function renderDetail(){
 
   /* wiring */
   const dc = document.getElementById('donechk');
-  dc.addEventListener('change', ()=>{ LS.state[it.no]=dc.checked?2:(LS.state[it.no]===0?1:1); touch(it.no); save(); renderList(); renderDash(); renderDetail(); });
+  dc.addEventListener('change', ()=>{ LS.state[it.no]=dc.checked?2:0; touch(it.no); save(); renderList(); renderDash(); renderDetail(); });
   document.getElementById('st_do').addEventListener('click',()=>{ LS.state[it.no]=1; touch(it.no); save(); renderList(); renderDash(); renderDetail(); });
   document.getElementById('st_new').addEventListener('click',()=>{ LS.state[it.no]=0; touch(it.no); save(); renderList(); renderDash(); renderDetail(); });
   const memo = document.getElementById('memo');
