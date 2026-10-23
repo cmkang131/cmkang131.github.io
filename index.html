@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://cmkang131.github.io/">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
-@font-face{font-family:'Noto Sans KR';src:url('notosanskr-subset.woff') format('woff');font-weight:400 700;font-display:swap}
+@font-face{font-family:'Noto Sans KR';src:url('notosanskr-subset.woff2') format('woff2'),url('notosanskr-subset.woff') format('woff');font-weight:400 700;font-display:swap}
 :root{--ink:#111;--gray:#666;--blue:#1e4f9f}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Noto Sans KR','Apple SD Gothic Neo',system-ui,sans-serif;background:#fff;color:var(--ink)}
@@ -34,6 +34,14 @@ a.row{color:var(--ink);text-decoration:none;display:flex}
 .gtitle{margin:22px 0 4px;font-size:13px;font-weight:700;color:var(--gray);letter-spacing:.08em}
 a.row:hover,a.row:focus-visible{background:#f2f5fa;outline:2px solid var(--blue);outline-offset:2px}
 a.row:focus-visible{border-radius:4px}
+/* 14. 허브 다크 모드 (CSS 전용, 2026-10-23). invert+hue-rotate 로 색상 유지, 라이트 모드 무변경 */
+@media (prefers-color-scheme:dark){
+  html{filter:invert(1) hue-rotate(180deg);background:#ededed;scrollbar-color:#5a5a5a #1a1a1a}
+  body,.page{background:#ededed}
+  a.row:hover,a.row:focus-visible{background:#f2f5fa}
+  .clist .row{border-bottom-color:#ddd}
+  .clist .st.off{color:#666;border-color:#bbb}
+}
 @media (max-width:760px){
   .page{padding:22px 18px 60px}
   .main{font-size:16px}
